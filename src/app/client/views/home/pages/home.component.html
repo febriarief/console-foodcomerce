@@ -1,0 +1,119 @@
+<!-- Banner hero -->
+<section class="py-5 overflow-hidden bg-primary" id="home" style="background:url('assets/images/hero.png');background-size:cover;background-repeat:no-repeat;">
+    <div class="container">
+        <div class="row flex-center">
+            <div class="col-md-12 col-lg-12 py-9 text-center">
+                <h1 class="fs-md-5 fs-lg-6 fs-xl-8 text-light">Santap Lezat Tanpa Ribet</h1>
+                <h1 class="fs-4 text-light">Pesan Katering Online Sekarang!</h1>
+
+                <div class="d-flex justify-content-center">
+                    <ng-lottie width="40px" [options]="{path: 'assets/lottie/arrow-down.json'}"></ng-lottie>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All products -->
+<section class="py-4 overflow-hidden">
+    <div class="container">
+        <div class="row h-100">
+            <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">Semua Produk</h5>
+            </div>
+
+            <div class="col-12">
+                <div class="row gx-3 h-100 align-items-center">
+                    <ng-container *ngIf="loadingData">
+                        <div *ngFor="let array of [1,2,3,4,5,6,7,8]" class="mb-4 col-md-3">
+                            <div class="card shadow-sm rounded-3">
+                                <div class="bg-white">
+                                    <ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '150px' }"></ngx-skeleton-loader>
+                                </div>
+                                
+                                <div class="card-body">
+                                    <div class="bg-white"><ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px' }"></ngx-skeleton-loader></div>
+                                    <div class="bg-white"><ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px' }"></ngx-skeleton-loader></div>
+                                    <div class="bg-white"><ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px' }"></ngx-skeleton-loader></div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="!loadingData">
+                        <div *ngFor="let product of products" class="col-md-2 mb-5">
+                            <div class="card card-span rounded-3">
+                                <img class="img-fluid rounded-3" [src]="webUrl + '/storage/' + product.gambar" alt="..." />
+                                <div class="card-body ps-0">
+                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ product.nama_produk }}</h5>
+                                    <span class="text-1000 fw-bold">{{ product.harga | rupiah }}</span>
+                                </div>
+                            </div>
+    
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-sm btn-danger" href="javascript:void(0)" role="button" (click)="viewItemDetail(product)">Pesan</a>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Food detail modal -->
+<ng-template #itemDetailModal>
+    <div class="modal-header border-0">
+        <h5 class="font-family-bold">Detail Produk</h5>
+        <div role="button" class="ms-auto" (click)="closeModal()">
+            <i class="fa-regular fa-circle-xmark fa-xl text-black"></i>
+        </div>
+    </div>
+
+    <div class="modal-body pt-0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img class="img-fluid rounded-3" [src]="webUrl + '/storage/' + itemDetail.gambar" alt="..." />
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="font-family-bold">{{ itemDetail.nama_produk }}</h5>
+                        {{ itemDetail.keterangan }}
+                        <h6 class="mt-3 font-family-bold">{{ itemDetail.harga | rupiah }}</h6>
+
+                        <div class="mt-4 input-group w-auto align-items-center">
+                            <input type="button" value="-" class="button-minus border rounded-circle icon-shape icon-sm mx-1" (click)="minusItem()">
+                            <input type="number" [(ngModel)]="itemDetail.qty" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25">
+                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm" (click)="plusItem()">
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-end">
+            <button type="button" class="ms-3 btn btn-sm btn-warning shadow-sm" (click)="addToCart()">
+                <i class="me-2 fa-regular fa-cart-shopping"></i> Tambahkan Keranjang
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<style>
+    icon-shape {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .icon-sm {
+        font-size: large;
+        width: 2rem;
+        height: 2rem;
+    }
+</style>

@@ -1,0 +1,120 @@
+<section class="h-100 h-custom" style="background-color:#eee;">
+    <div class="container h-100" style="min-height:500px;">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div *ngIf="order?.status == 'PENDING'" class="alert alert-success" role="alert">
+                            <i class="me-1 fa-sharp fa-solid fa-check"></i> Pesanan berhasil dibuat
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-7">  
+                                <ng-container *ngIf="loadingData">
+                                    <div *ngFor="let array of [1,2,3,4,5]" class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '150px', 'width': '150px' }"></ngx-skeleton-loader>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                                    <ngx-skeleton-loader [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                                <ng-container *ngIf="!loadingData">
+                                    <div *ngFor="let detail of details" class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img [src]="webUrl + '/storage/' + detail.gambar_produk" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                    </div>
+    
+                                                    <div class="ms-3">
+                                                        <h5>{{ detail.nama_produk }}</h5>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">x{{ detail.kuantitas_produk }}</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        {{ detail.total | rupiah }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label small" for="email">No. Pesanan:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order?.id_pesanan }}</div>
+                                        
+                                        <label class="mt-3 form-label small" for="email">Status:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        
+                                        <div *ngIf="!loadingData && order?.status == 'PENDING'" class="fw-bold"><span class="badge bg-warning">Pembayaran Tertunda</span></div>
+                                        <div *ngIf="!loadingData && order?.status == 'PROCESS'" class="fw-bold"><span class="badge bg-secondary">Diproses</span></div>
+                                        <div *ngIf="!loadingData && order?.status == 'FINISH'" class="fw-bold"><span class="badge bg-success">Selesai</span></div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label class="form-label small" for="email">Tanggal Pesanan:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order.tanggal_pesanan ? (order.tanggal_pesanan | date: 'YYYY-MM-dd HH:mm') : '' }}</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="mt-3 form-label small" for="email">Nama:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order?.nama_pelanggan }}</div>
+                                        
+                                        <label class="mt-3 form-label small" for="email">Email:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order?.email }}</div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label class="mt-3 form-label small" for="email">Alamat:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order?.alamat }}</div>
+                                        
+                                        <label class="mt-3 form-label small" for="email">No. Hp:</label>
+                                        <ngx-skeleton-loader *ngIf="loadingData" [theme]="{ 'border-radius': '5px', 'background-color': '#e9e9e9', 'margin-bottom': '0px', 'height': '20px' }"></ngx-skeleton-loader>
+                                        <div *ngIf="!loadingData" class="fw-bold">{{ order?.nomor_hp }}</div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="order?.status == 'PENDING'" class="mt-5">
+                                    Untuk menyelesaikan pesanan Anda, mohon segera melakukan transfer ke rekening dibawah ini. 
+
+                                    <div class="my-3 d-flex align-items-center">
+                                        <img src="assets/images/bca-logo.png" class="img-fluid" style="height:30px;"/>
+                                        <div class="ms-3">
+                                            a/n <span class="fw-bold">Dapuremaqu</span><br/>
+                                            7898797878979
+                                        </div>
+                                    </div>
+                                    Setelah transfer selesai, kirimkan bukti transfer melalui WhatsApp ke nomor <span class="fw-bold">08123456789</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li *ngFor="let menu of navData" class="nav-item" routerLinkActive="active" (mouseenter)="onHover($event)" (mouseleave)="onHoverOut($event)">
+            <a class="nav-link" [routerLink]="menu.path">
+                <i class="menu-icon" [class]="menu.icon"></i>
+                <span class="menu-title">{{ menu.label }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

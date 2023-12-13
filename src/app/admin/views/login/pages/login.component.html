@@ -1,0 +1,36 @@
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <img src="assets/images/admin/logo.svg" alt="logo">
+                        </div>
+
+                        <h6 class="font-weight-light">Masuk untuk melanjutkan.</h6>
+                        <form class="pt-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" [(ngModel)]="form.username" placeholder="nama pengguna">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" [(ngModel)]="form.password" placeholder="kata sandi">
+                            </div>
+                            <div class="mt-3">
+                                
+                                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="signIn()">
+                                    <ng-container *ngIf="isSubmit">
+                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                        memproses data...
+                                    </ng-container>
+                                
+                                    <ng-container *ngIf="!isSubmit">Masuk</ng-container>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
