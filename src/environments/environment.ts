@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    appUrl: 'https://dapuremaqu.test/api',
-    webUrl: 'https://dapuremaqu.test'
+    appUrl: 'https://api.kelompok-4.my.id/api',
+    webUrl: 'https://api.kelompok-4.my.id'
 }
