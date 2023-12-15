@@ -109,7 +109,7 @@ export class ProductsComponent implements OnInit
         this.formTitle = 'Ubah Data Produk'
         this.editMode = true
         this.form = { ...this.form, ...entry }
-        this.productImage = `${this.webUrl}/storage/${this.form.gambar}`
+        this.productImage = `${this.webUrl}/images/${this.form.gambar}`
         
         this._openform()
     }

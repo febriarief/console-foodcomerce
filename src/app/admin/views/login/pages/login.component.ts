@@ -5,14 +5,7 @@ import { AuthService } from "../services";
 
 @Component({
     selector: 'admin-login',
-    templateUrl: 'login.component.html',
-    styleUrls: [
-        "../../../../../assets/css/admin/feather.css",
-        "../../../../../assets/css/admin/themify-icons.css",
-        "../../../../../assets/css/admin/vendor.bundle.base.css",
-        "../../../../../assets/css/admin/style.css"
-    ],
-    encapsulation: ViewEncapsulation.None
+    templateUrl: 'login.component.html'
 })
 
 export class LoginComponent implements OnInit

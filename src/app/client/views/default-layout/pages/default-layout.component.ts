@@ -6,8 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
     templateUrl: 'default-layout.component.html',
-    styleUrls: ["../../../../../assets/css/client/theme.css"],
-    encapsulation: ViewEncapsulation.None
 })
 
 export class DefaultLayoutComponent implements OnInit

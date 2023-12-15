@@ -4,6 +4,7 @@ import { Subject } from 'rxjs'
 
 @Component({
   	templateUrl: './app-dialog.component.html',
+      selector: 'admin-app-dialog'
 })
 export class AppDialogComponent {
     @Input() message!: string

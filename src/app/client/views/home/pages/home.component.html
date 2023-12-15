@@ -43,7 +43,7 @@
                     <ng-container *ngIf="!loadingData">
                         <div *ngFor="let product of products" class="col-md-2 mb-5">
                             <div class="card card-span rounded-3">
-                                <img class="img-fluid rounded-3" [src]="webUrl + '/storage/' + product.gambar" alt="..." />
+                                <img class="img-fluid rounded-3" [src]="webUrl + '/images/' + product.gambar" alt="..." />
                                 <div class="card-body ps-0">
                                     <h5 class="fw-bold text-1000 text-truncate mb-1">{{ product.nama_produk }}</h5>
                                     <span class="text-1000 fw-bold">{{ product.harga | rupiah }}</span>
@@ -75,7 +75,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-5">
-                        <img class="img-fluid rounded-3" [src]="webUrl + '/storage/' + itemDetail.gambar" alt="..." />
+                        <img class="img-fluid rounded-3" [src]="webUrl + '/images/' + itemDetail.gambar" alt="..." />
                     </div>
                     <div class="col-md-7">
                         <h5 class="font-family-bold">{{ itemDetail.nama_produk }}</h5>

@@ -25,7 +25,7 @@
 
                     <ng-container *ngIf="carts.length > 0">
                         <div *ngFor="let cart of carts" class="mx-3 mb-3 d-flex align-items-center">
-                            <img class="img-fluid rounded" style="width:60px;height:60px" [src]="webUrl + '/storage/' + cart.gambar" alt="..." />
+                            <img class="img-fluid rounded" style="width:60px;height:60px" [src]="webUrl + '/images/' + cart.gambar" alt="..." />
                             <h5 class="mx-3 fw-bold text-1000 text-truncate mb-1">{{ cart.nama_produk }}</h5>
                             x{{ cart.qty }}
                             <div role="button" class="ms-3 text-danger" (click)="deleteItem(cart.id_produk)"><i class="fas fa-trash-alt"></i></div>

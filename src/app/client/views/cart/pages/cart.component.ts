@@ -129,7 +129,7 @@ export class CartComponent implements OnInit
                 localStorage.removeItem('carts');
                 this._headerService.updateCart(0);
 
-                setTimeout(() => this._router.navigate(['/order', res.order_id]), 600);
+                setTimeout(() => this._router.navigate(['/order'], { queryParams: {order_id: res.order_id }}), 600);
             },
             error: (err: any) => {
                 this.isSubmitting = false;

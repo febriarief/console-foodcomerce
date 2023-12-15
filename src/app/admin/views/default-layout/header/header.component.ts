@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../login/services';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '~/environments/environment';
 
 @Component({
     selector: 'admin-header',
@@ -30,7 +31,7 @@ export class HeaderComponent
         this._authService.logout()
         .subscribe({
             next: () => {
-                window.location.href = 'login';
+                window.location.href = '/#/login';
             },
             error: (err: any) => {
                 let errorMessage = 'Gagal memproses data'
