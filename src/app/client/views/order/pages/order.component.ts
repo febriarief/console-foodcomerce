@@ -38,7 +38,12 @@ export class OrderComponent implements OnInit
      * @returns void
      */
     ngOnInit(): void {
-        this._activatedRoute.params.subscribe((params: Params) => this.loadData(params['order_id']));
+        this._activatedRoute.queryParams
+        .subscribe((params) => {
+            if (params && params['order_id']) {
+                this.loadData(params['order_id'])
+            }
+        });
     }
 
     loadData(order_id: string): void {

@@ -80,7 +80,7 @@ export class DefaultLayoutComponent implements OnInit
 
         this.closeModal()
         setTimeout(() => {
-            this._router.navigate(['/order', this.orderId])
+            this._router.navigate(['/order'], { queryParams: {order_id: this.orderId}})
             this.orderId = null;
         }, 600);
     }

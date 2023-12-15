@@ -6,7 +6,7 @@ import { OrderService } from './services';
 
 
 const ROUTES: Routes = [
-    { path: ':order_id', component: OrderComponent }
+    { path: '', component: OrderComponent }
 ];
 
 // const COMPONENTS = [
